@@ -3,7 +3,7 @@
     public class ProductResponse
     {
         public int ProductId { get; set; }
-        public CategoryResponse OCategory { get; set; }
+        public CategoryResponse OCategoryResponse { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
     }
