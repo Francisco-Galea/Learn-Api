@@ -17,7 +17,9 @@ namespace TestApi
             CreateMap<Order, OrderResponse>()
             .ForMember(dest => dest.OUserResponse, opt => opt.MapFrom(src => src.OUser));
 
-            
+            CreateMap<CategoryRequest, Category>().ReverseMap();
+            CreateMap<Category, CategoryResponse>().ReverseMap();
+
 
         }
     }
