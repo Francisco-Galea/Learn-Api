@@ -9,8 +9,8 @@ namespace TestApi.Services
 {
     public class OrderService
     {
-        public readonly IMapper mapper;
-        public readonly IOrderRepository orderRepository;
+        private readonly IMapper mapper;
+        private readonly IOrderRepository orderRepository;
 
         public OrderService(IMapper mapper, IOrderRepository orderRepository)
         {
