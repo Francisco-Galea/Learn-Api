@@ -20,6 +20,9 @@ namespace TestApi
             CreateMap<CategoryRequest, Category>().ReverseMap();
             CreateMap<Category, CategoryResponse>().ReverseMap();
 
+            CreateMap<ProductRequest, Product>().ReverseMap();
+            CreateMap<Product, ProductResponse>()
+            .ForMember(dest => dest.OCategoryResponse, opt => opt.MapFrom(src => src.OCategory));
 
         }
     }
