@@ -41,7 +41,7 @@ namespace TestApi.Controllers
             return await userService.GetAllUsers();
         }
 
-        [HttpPatch]
+        [HttpPatch("{id}")]
         public async Task DeactivateUser(int id)
         {
             await userService.DeactivateUser(id);

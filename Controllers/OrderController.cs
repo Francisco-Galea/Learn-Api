@@ -42,7 +42,7 @@ namespace TestApi.Controllers
             return await orderService.GetAllOrders();
         }
 
-        [HttpPatch]
+        [HttpPatch("{id}")]
         public async Task DeactivateOrder(int id)
         {
             await orderService.DeactivateOrder(id);

@@ -41,7 +41,7 @@ namespace TestApi.Controllers
             return await categoryService.GetAllCategories();
         }        
 
-        [HttpPatch]
+        [HttpPatch("{id}")]
         public async Task DeleteCategory(int id)
         {
             await categoryService.DeleteCategory(id);

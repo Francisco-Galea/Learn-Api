@@ -41,6 +41,11 @@ namespace TestApi.Controllers
             return await productService.GetAllProducts();
         }
 
+        [HttpPatch("{id}")]
+        public async Task DeleteProduct(int id)
+        {
+            await productService.DeleteProduct(id);
+        }
 
     }
 }
