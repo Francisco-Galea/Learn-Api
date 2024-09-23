@@ -24,6 +24,11 @@ namespace TestApi
             CreateMap<Product, ProductResponse>()
             .ForMember(dest => dest.OCategoryResponse, opt => opt.MapFrom(src => src.OCategory));
 
+            CreateMap<ItemOrderedRequest, ItemOrdered>().ReverseMap();
+            CreateMap<ItemOrdered, ItemOrderedResponse>()
+            .ForMember(dest => dest.OProductResponse, opt => opt.MapFrom(src => src.OProduct));
+            
+           
         }
     }
 }
