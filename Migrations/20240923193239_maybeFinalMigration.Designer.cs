@@ -12,8 +12,8 @@ using TestApi.Data;
 namespace TestApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240922194428_5thMigration")]
-    partial class _5thMigration
+    [Migration("20240923193239_maybeFinalMigration")]
+    partial class maybeFinalMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,38 @@ namespace TestApi.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("TestApi.Models.Entities.ItemOrdered", b =>
+                {
+                    b.Property<int>("ItemOrderedId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ItemOrderedId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemOrderedId"));
+
+                    b.Property<bool>("IsItemOrderedActive")
+                        .HasColumnType("bit")
+                        .HasColumnName("IsItemOrderedActive");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductQuantity")
+                        .HasColumnType("int")
+                        .HasColumnName("ProductQuantity");
+
+                    b.HasKey("ItemOrderedId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ItemsOrdered");
                 });
 
             modelBuilder.Entity("TestApi.Models.Entities.Order", b =>
@@ -141,6 +173,25 @@ namespace TestApi.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("TestApi.Models.Entities.ItemOrdered", b =>
+                {
+                    b.HasOne("TestApi.Models.Entities.Order", "OOrder")
+                        .WithMany("OItemsOrdered")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TestApi.Models.Entities.Product", "OProduct")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OOrder");
+
+                    b.Navigation("OProduct");
+                });
+
             modelBuilder.Entity("TestApi.Models.Entities.Order", b =>
                 {
                     b.HasOne("TestApi.Models.Entities.User", "OUser")
@@ -161,6 +212,11 @@ namespace TestApi.Migrations
                         .IsRequired();
 
                     b.Navigation("OCategory");
+                });
+
+            modelBuilder.Entity("TestApi.Models.Entities.Order", b =>
+                {
+                    b.Navigation("OItemsOrdered");
                 });
 #pragma warning restore 612, 618
         }

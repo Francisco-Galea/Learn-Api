@@ -16,6 +16,11 @@ namespace TestApi.Models.Entities
         public virtual Product OProduct { get; set; }
 
         [Required]
+        [ForeignKey("OrderId")]
+        public int OrderId { get; set; }
+        public virtual Order OOrder { get; set; }
+
+        [Required]
         [Column("ProductQuantity", TypeName = "int")]
         public int ProductQuantity { get; set; }
 

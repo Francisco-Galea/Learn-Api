@@ -58,6 +58,9 @@ namespace TestApi.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("IsItemOrderedActive");
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -66,6 +69,8 @@ namespace TestApi.Migrations
                         .HasColumnName("ProductQuantity");
 
                     b.HasKey("ItemOrderedId");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -167,11 +172,19 @@ namespace TestApi.Migrations
 
             modelBuilder.Entity("TestApi.Models.Entities.ItemOrdered", b =>
                 {
+                    b.HasOne("TestApi.Models.Entities.Order", "OOrder")
+                        .WithMany("OItemsOrdered")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TestApi.Models.Entities.Product", "OProduct")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("OOrder");
 
                     b.Navigation("OProduct");
                 });
@@ -196,6 +209,11 @@ namespace TestApi.Migrations
                         .IsRequired();
 
                     b.Navigation("OCategory");
+                });
+
+            modelBuilder.Entity("TestApi.Models.Entities.Order", b =>
+                {
+                    b.Navigation("OItemsOrdered");
                 });
 #pragma warning restore 612, 618
         }

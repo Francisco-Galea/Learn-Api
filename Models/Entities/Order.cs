@@ -15,6 +15,8 @@ namespace TestApi.Models.Entities
         [ForeignKey("UserId")]
         public int UserId { get; set; }
         public virtual User OUser { get; set; }
+        
+        public virtual List<ItemOrdered> OItemsOrdered { get; set; }
 
         [Required]
         [Column("OrderPurchaseDate", TypeName = "date")]

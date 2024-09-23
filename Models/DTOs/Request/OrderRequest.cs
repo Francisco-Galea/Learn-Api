@@ -4,5 +4,6 @@
     {
         public int UserId { get; set; }
         public DateTime OrderPurchaseDate { get; set; }
+        
     }
 }
