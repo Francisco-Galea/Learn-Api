@@ -40,5 +40,6 @@ namespace TestApi.Repositories
                          .Where(c => c.IsCategoryActive == true)
                          .ToListAsync();
         }
+
     }
 }

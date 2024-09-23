@@ -29,6 +29,9 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
+builder.Services.AddScoped<ItemOrderedService>();
+builder.Services.AddScoped<IItemOrderedRepository, ItemOrderedRepository>();
+
 #endregion
 
 var app = builder.Build();
