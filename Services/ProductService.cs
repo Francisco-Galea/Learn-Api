@@ -56,6 +56,19 @@ namespace TestApi.Services
             return mapper.Map<List<ProductResponse>>(products);
         }
 
+        public async Task DeleteProduct(int id)
+        {
+            var existingProduct = await productRepository.GetById(id);
+            if (existingProduct == null)
+            {
+                throw new KeyNotFoundException("No se ha encontrado el producto");
+            }
+            else
+            {       
+                existingProduct.IsProductActive = false;
+                await productRepository.Update(existingProduct);
+            }
+        }
 
     }
 }
