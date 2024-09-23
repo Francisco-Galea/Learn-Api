@@ -130,6 +130,10 @@ namespace TestApi.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasColumnName("ProductName");
 
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("ProductPrice");
+
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");

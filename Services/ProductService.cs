@@ -33,7 +33,7 @@ namespace TestApi.Services
             }
             else
             {
-                mapper.Map(existingProduct, productRequest);
+                mapper.Map(productRequest, existingProduct);
                 await productRepository.Update(existingProduct);
             }
         }

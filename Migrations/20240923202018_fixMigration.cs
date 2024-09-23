@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TestApi.Migrations
 {
     /// <inheritdoc />
-    public partial class maybeFinalMigration : Migration
+    public partial class fixMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,6 +50,7 @@ namespace TestApi.Migrations
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     ProductName = table.Column<string>(type: "nvarchar(500)", nullable: false),
                     ProductDescription = table.Column<string>(type: "nvarchar(1000)", nullable: false),
+                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsProductActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

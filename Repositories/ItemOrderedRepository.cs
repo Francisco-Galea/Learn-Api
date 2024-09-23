@@ -19,6 +19,7 @@ namespace TestApi.Repositories
             await context.SaveChangesAsync();
         }
 
+        //Revisar metodo
         public override async Task Update(ItemOrdered itemOrdered)
         {
             context.ItemsOrdered.Update(itemOrdered);

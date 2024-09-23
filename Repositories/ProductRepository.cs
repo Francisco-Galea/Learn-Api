@@ -19,7 +19,7 @@ namespace TestApi.Repositories
             await context.SaveChangesAsync();
         }
 
-        //Revisar metodo
+
         public override async Task Update(Product product)
         {
             context.Products.Update(product);

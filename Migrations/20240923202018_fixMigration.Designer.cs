@@ -12,8 +12,8 @@ using TestApi.Data;
 namespace TestApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240923193239_maybeFinalMigration")]
-    partial class maybeFinalMigration
+    [Migration("20240923202018_fixMigration")]
+    partial class fixMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -132,6 +132,10 @@ namespace TestApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
                         .HasColumnName("ProductName");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("ProductPrice");
 
                     b.HasKey("ProductId");
 

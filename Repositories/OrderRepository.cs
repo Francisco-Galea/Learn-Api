@@ -29,8 +29,11 @@ namespace TestApi.Repositories
         public override async Task<Order?> GetById(int id)
         {
             return await context
-                         .Orders                         
+                         .Orders
                          .Where(o => o.IsOrderActive == true && o.OrderId == id)
+                         .Include(o => o.OItemsOrdered)
+                            .ThenInclude(io => io.OProduct)
+                                .ThenInclude(p => p.OCategory)
                          .Include(o => o.OUser)
                          .FirstAsync();
         }

@@ -33,7 +33,7 @@ namespace TestApi.Services
             }
             else
             {
-                mapper.Map(ItemOrderedExist, itemOrderedRequest);
+                mapper.Map(itemOrderedRequest, ItemOrderedExist);
                 await itemOrderedRepository.Update(ItemOrderedExist);
             }
         }

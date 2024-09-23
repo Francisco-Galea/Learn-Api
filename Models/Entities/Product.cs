@@ -23,6 +23,10 @@ namespace TestApi.Models.Entities
         [Required]
         [Column("ProductDescription", TypeName = "nvarchar(1000)")]
         public string ProductDescription { get; set; }
+
+        [Required]
+        [Column("ProductPrice", TypeName = "decimal(18,2)")]
+        public decimal ProductPrice { get; set; }
         
         [Column("IsProductActive", TypeName = "bit")]
         public bool IsProductActive { get; set; }
